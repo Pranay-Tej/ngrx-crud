@@ -1,0 +1,6 @@
+<div *ngFor="let article of articles$ | async">
+  <div (click)="selectArticle(article._id)">
+    {{ article.title }}
+  {{ article.description }}
+  </div>
+</div>
