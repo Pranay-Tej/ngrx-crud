@@ -25,10 +25,16 @@ export const createArticle = createAction(
   props<{title: string, description: string}>()
 )
 
+export const deleteArticle = createAction(
+  '[Article] Delete Article',
+  props<{articleId: string}>()
+)
+
 export const articleActions = {
   loadArticleList,
   setArticleList,
   loadArticle,
   setArticle,
-  createArticle
+  createArticle,
+  deleteArticle
 }

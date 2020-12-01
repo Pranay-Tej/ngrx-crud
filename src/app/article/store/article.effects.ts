@@ -58,4 +58,19 @@ export class ArticleEffects {
     )
   );
 
+  deleteArticle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[Article] Delete Article'),
+      mergeMap((action: any) =>
+        this.articleService.deleteArticle(action.articleId).pipe(
+          // map(articles => articles.data),
+          switchMap((selectedArticle: Article) => {
+            return [articleActions.loadArticleList()];
+          }),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
 }

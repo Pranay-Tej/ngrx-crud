@@ -22,8 +22,12 @@ export class ArticleListComponent implements OnInit {
     this.articles$ = this.store.select(ArticleList);
   }
 
-  selectArticle(articleId){
+  selectArticle(articleId: string){
     this.store.dispatch(articleActions.loadArticle({articleId}))
+  }
+
+  deleteArticle(articleId: string){
+    this.store.dispatch(articleActions.deleteArticle({articleId}))
   }
 
 }
