@@ -1,22 +1,28 @@
 import { createAction, props } from '@ngrx/store';
 import { Article } from '../model/article.model';
 
-export const loadArticles = createAction(
-  '[Articles] Load'
+export const loadArticleList = createAction(
+  '[Articles] Load Article List'
 )
 
-export const setArticles = createAction(
-  '[Articles API] Articles Loaded Success',
-  props<{articles: Article[]}>()
+export const setArticleList = createAction(
+  '[Articles API] Article List Load Success',
+  props<{articleList: Article[]}>()
 )
 
-export const selectArticle = createAction(
-  '[Article] Selected',
+export const loadArticle = createAction(
+  '[Article] Load Article',
   props<{articleId: string}>()
 )
 
+export const setArticle = createAction(
+  '[Article] Article Load Success',
+  props<{selectedArticle: Article}>()
+)
+
 export const articleActions = {
-  loadArticles,
-  selectArticle,
-  setArticles
+  loadArticleList,
+  setArticleList,
+  loadArticle,
+  setArticle
 }

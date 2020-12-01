@@ -7,6 +7,7 @@ import { ArticleListComponent } from './components/article-list/article-list.com
 import { articleReducer } from './store/article.reducer';
 import { ArticleEffects } from './store/article.effects';
 import { ArticleComponent } from './components/article/article.component';
+import { ArticleFormComponent } from './components/article-form/article-form.component';
 
 @NgModule({
   imports: [
@@ -14,8 +15,8 @@ import { ArticleComponent } from './components/article/article.component';
     StoreModule.forFeature('articles', articleReducer),
     EffectsModule.forFeature([ArticleEffects])
   ],
-  declarations: [ArticleComponent, ArticleListComponent],
+  declarations: [ArticleComponent, ArticleListComponent, ArticleFormComponent],
   providers: [ArticleService],
-  exports: [ArticleComponent, ArticleListComponent]
+  exports: [ArticleComponent, ArticleListComponent, ArticleFormComponent]
 })
 export class ArticleModule { }

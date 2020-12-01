@@ -1,0 +1,16 @@
+.app{
+  display: grid;
+  grid-template-areas: "l l" "f a";
+}
+
+.article-list{
+  grid-area: l;
+}
+
+.article-form{
+  grid-area: f;
+}
+
+.article{
+  grid-area: a;
+}

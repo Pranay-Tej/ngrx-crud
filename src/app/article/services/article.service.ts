@@ -10,8 +10,10 @@ export class ArticleService {
 constructor(private httpClient:HttpClient) { }
 
   getAll(): Observable<Article[]>{
-    console.log('loading');
-    
     return this.httpClient.get<Article[]>(`${environment.api_url}/articles`)
+  }
+
+  getById(articleId: string): Observable<Article>{
+    return this.httpClient.get<Article>(`${environment.api_url}/articles/${articleId}`)
   }
 }

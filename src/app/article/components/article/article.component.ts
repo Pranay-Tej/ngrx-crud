@@ -2,7 +2,8 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store';
-import { getSelectedArticle } from '../../store/article.selectors';
+import { selectedArticle } from '../../store/article.selectors';
+import { Article } from '../../model/article.model';
 
 @Component({
   selector: 'app-article',
@@ -11,13 +12,12 @@ import { getSelectedArticle } from '../../store/article.selectors';
 })
 export class ArticleComponent implements OnInit {
 
-  article$: Observable<any>;
+  article$: Observable<Article>;
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.article$ = this.store.select(getSelectedArticle);
-
+    this.article$ = this.store.select(selectedArticle);
   }
 
 }

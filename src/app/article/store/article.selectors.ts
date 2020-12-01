@@ -3,12 +3,12 @@ import { ArticleState } from './article.reducer';
 
 export const articleFeatureSelector = createFeatureSelector<ArticleState>('articles');
 
-export const getAllArticles = createSelector(
+export const ArticleList = createSelector(
   articleFeatureSelector,
   state => state.articleList
 )
 
-export const getSelectedArticle = createSelector(
+export const selectedArticle = createSelector(
   articleFeatureSelector,
   state => state.selectedArticle
 )

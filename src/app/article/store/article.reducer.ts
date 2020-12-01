@@ -5,7 +5,7 @@ import { articleActions } from './article.actions';
 
 export interface ArticleState {
   articleList: Article[],
-  selectedArticle: string
+  selectedArticle: Article
 }
 
 export const initialState:ArticleState = {
@@ -15,8 +15,8 @@ export const initialState:ArticleState = {
 
 export const articleReducer = createReducer(
   initialState,
-  on(articleActions.selectArticle, (state, {articleId}) => ({...state, selectedArticle: articleId})),
-  on(articleActions.setArticles, (state, {articles}) => ({...state, articleList: articles}))
+  on(articleActions.setArticle, (state, {selectedArticle}) => ({...state, selectedArticle: selectedArticle})),
+  on(articleActions.setArticleList, (state, {articleList}) => ({...state, articleList: articleList}))
 )
 
 // export function articleReducer (state, action) {

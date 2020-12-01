@@ -13,14 +13,14 @@ export class ArticleEffects {
     private articleService: ArticleService
   ) {}
 
-  loadArticles$ = createEffect(() =>
+  loadArticleList$ = createEffect(() =>
     this.actions$.pipe(
-      ofType('[Articles] Load'),
+      ofType('[Articles] Load Article List'),
       mergeMap(() =>
         this.articleService.getAll().pipe(
           // map(articles => articles.data),
-          switchMap((articles: Article[]) => {
-            return [articleActions.setArticles({ articles })];
+          switchMap((articleList: Article[]) => {
+            return [articleActions.setArticleList({ articleList })];
           }),
           catchError(() => EMPTY)
         )
@@ -28,13 +28,19 @@ export class ArticleEffects {
     )
   );
 
-  setArticle$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType('[Article] Selected'),
-        map((action: any) => action.articleId),
-        tap((articleId) => console.log(articleId))
-      ),
-    { dispatch: false }
+  loadArticle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[Article] Load Article'),
+      mergeMap((action: any) =>
+        this.articleService.getById(action.articleId).pipe(
+          // map(articles => articles.data),
+          switchMap((selectedArticle: Article) => {
+            return [articleActions.setArticle({ selectedArticle })];
+          }),
+          catchError(() => EMPTY)
+        )
+      )
+    )
   );
+
 }
