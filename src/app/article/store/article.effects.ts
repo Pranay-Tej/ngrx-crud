@@ -43,4 +43,19 @@ export class ArticleEffects {
     )
   );
 
+  createArticle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[Article] Create Article'),
+      mergeMap((action: any) =>
+        this.articleService.createArticle(action.title, action.description).pipe(
+          // map(articles => articles.data),
+          switchMap((selectedArticle: Article) => {
+            return [articleActions.loadArticleList()];
+          }),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
 }

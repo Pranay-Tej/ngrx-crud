@@ -20,9 +20,15 @@ export const setArticle = createAction(
   props<{selectedArticle: Article}>()
 )
 
+export const createArticle = createAction(
+  '[Article] Create Article',
+  props<{title: string, description: string}>()
+)
+
 export const articleActions = {
   loadArticleList,
   setArticleList,
   loadArticle,
-  setArticle
+  setArticle,
+  createArticle
 }

@@ -1,3 +1,3 @@
-<p>
-  article-form works!
-</p>
+<input type="text" name="title" id="title" #articleTitle>
+<input type="text" name="description" id="description" #articleDescription>
+<button (click)="createArticle(articleTitle.value, articleDescription.value)">Create</button>

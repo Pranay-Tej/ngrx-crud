@@ -16,4 +16,10 @@ constructor(private httpClient:HttpClient) { }
   getById(articleId: string): Observable<Article>{
     return this.httpClient.get<Article>(`${environment.api_url}/articles/${articleId}`)
   }
+
+  createArticle(title: string, description: string){
+    console.log(title);
+    
+    return this.httpClient.post<Article>(`${environment.api_url}/articles`, { "title": title, "description": description })
+  }
 }
