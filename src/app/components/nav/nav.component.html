@@ -1,0 +1,4 @@
+<div class="nav-bar">
+  <div class="nav" [ngClass]="{'selected': selectedNavItem$ === 'home'}" (click)="navigate('home')">Home</div>
+  <div class="nav" [ngClass]="{'selected': selectedNavItem$ === 'about'}" (click)="navigate('about')">About</div>
+</div>

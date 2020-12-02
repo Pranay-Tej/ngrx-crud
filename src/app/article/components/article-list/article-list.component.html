@@ -1,7 +1,7 @@
-<div *ngFor="let article of articles$ | async">
+<div *ngFor="let article of articles$ | async" class="article">
   <div (click)="selectArticle(article._id)">
     {{ article.title }}
   {{ article.description }}
   </div>
-  <button (click)="deleteArticle(article._id)">D</button>
+  <button (click)="deleteArticle(article._id)">X</button>
 </div>
