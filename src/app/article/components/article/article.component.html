@@ -1,1 +1,7 @@
-<div>{{ article$ | async | json}}</div>
+<div *ngIf="article$ | async as article">
+  <p>{{ article.title }}</p>
+</div>
+
+<div *ngIf="article$ | async; let article">
+  <p>{{ article._id }}</p>
+</div>
